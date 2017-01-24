@@ -1,0 +1,121 @@
+﻿@using System.Web.Services.Description
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />   
+    <link href="~/Content/MyTemplate/css/components.css" rel="stylesheet" /> 
+    <link href="~/Content/MyTemplate/css/icons.css" rel="stylesheet" /> 
+    <link href="~/Content/MyTemplate/css/responsee.css" rel="stylesheet" /> 
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href="~/Content/MyTemplate/css/Font.css" rel="stylesheet" />
+    <script src="~/Content/MyTemplate/js/jquery-1.8.3.min.js"></script>
+    <script src="~/Content/MyTemplate/js/jquery-ui.min.js"></script>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+    <body style="background-color: hotpink;">
+        <header>
+            <div class="line">
+                <div class="box">
+                    <div class="s-6 l-2">
+                        <img src="~/Content/MyTemplate/img/logo.png" />
+                    </div>
+                    <div class="s-12 l-8 right">
+                        <div class="margin">
+                            <form class="customform s-12 l-8" method="get" action="@Url.Action("ViewAllDonorsByBloodGroup", "Donation")">
+                                <div class="s-9"><input type="text" placeholder="Search by blood group" title="Search form" /></div>
+                                <div class="s-3"><button type="submit" onclick="@Url.Action("ViewAllDonorsByBloodGroup", "Donation")">Search</button></div>
+                            </form>                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- TOP NAV -->
+            <div class="line">
+                <nav>
+                    <p class="nav-text">Main navigation</p>
+                    <div class="top-nav s-12 l-10">
+                        <ul>
+                            <li>@Html.ActionLink("Home", "HomePage", "Donation")</li>
+                            <li>@Html.ActionLink("About", "About", "Donation")</li>
+                            <li>@Html.ActionLink("Need Blood?", "NeedBlood", "Donation")</li>
+                            <li>@Html.ActionLink("Top Donors", "FindTopDonors", "Donation")</li>                              
+                            
+                            <li>
+                                <a>Find All Donors</a>
+                                <ul>
+                                    <li>@Html.ActionLink("By Blood Group", "ViewAllDonorsByBloodGroup", "Donation")</li>
+                                    <li>@Html.ActionLink("By Area", "ViewAllDonorsByArea", "Donation")</li>
+                                </ul>
+                            </li>
+                            <li>@Html.ActionLink("Donor Guide", "DonorGuide", "Donation")</li>
+                            <li>@Html.ActionLink("Contact Us", "Contact", "Donation")</li>
+                        </ul>
+                        @Html.Partial("_LogInPartial")
+                    </div>                   
+                </nav>
+            </div>
+        </header>
+        <!-- ASIDE NAV AND CONTENT -->
+        <div class="line">
+            <div class="box">
+                <div class="margin2x">
+                    <!-- CONTENT -->
+                    <section class="s-12 m-8 l-9 right">                       
+                        <div style="margin-left: 50px; background-color: aquamarine; padding: 30px;" class="margin">
+                            @RenderBody()
+                        </div>
+                    </section>
+                    <!-- ASIDE NAV -->
+                    <aside class="s-12 m-4 l-3">
+                        <div class="aside-nav minimize-on-small" style="color: blueviolet; font-size: 15px">
+                            <p class="aside-nav-text">Sidebar navigation</p>
+                            <ul>
+                                <li>@Html.ActionLink("Need Blood? Make a request...","NeedBlood","Donation")</li>
+                                <li>
+                                    <a>Tips On Blood Donation</a>
+                                    <ul>
+                                        <li><a>@Html.ActionLink("Why Blood Donation", "WhyBloodDonation", "Donation")</a></li>
+                                        <li><a>@Html.ActionLink("Eligibility for Donation", "EligibilityForDonation", "Donation")</a></li>
+                                        <li>
+                                            <a>@Html.ActionLink("Tips On Donation", "TipsOnDonation", "Donation")</a>                                           
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a>Recent Blood Reuests</a>
+                                    <ul>
+                                        <li><a>@Html.ActionLink("Last Five Days Requests", "LastFiveDaysRequest", "Donation")</a></li>
+                                        <li><a>@Html.ActionLink("Last Month Requests", "LastMonthRequests", "Donation")</a></li>
+                                    </ul>
+                                </li>
+                                <li><a>@Html.ActionLink("Recent Registered Donors", "RecentRegisteredDonors", "Donation")</a></li>
+                            </ul>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+        <!-- FOOTER -->
+        <footer class="line">
+            <div class="s-12 l-6">
+                <p>Copyright 2016 &copy; MrWEED</p>
+            </div>
+            <div class="s-12 l-6">
+                
+                <a class="right" href="http://www.facebook.com/akmal2494" title="Welcome to our group">Design and coding by Akmal, Mou, Chandni</a>
+            </div>
+        </footer>
+
+        <script src="~/Content/MyTemplate/js/responsee.js"></script>
+       
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryval")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

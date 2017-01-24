@@ -1,0 +1,66 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutMy.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Free responsive business website template</title>
+    <link href="~/Content/HomepgaeSlider/css/components.css" rel="stylesheet" />
+    <link href="~/Content/HomepgaeSlider/css/icons.css" rel="stylesheet" />
+    <link href="~/Content/HomepgaeSlider/css/responsee.css" rel="stylesheet" />
+    <link href="~/Content/HomepgaeSlider/owl-carousel/owl.carousel.css" rel="stylesheet" />
+    <link href="~/Content/HomepgaeSlider/owl-carousel/owl.theme.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <script src="~/Content/HomepgaeSlider/js/jquery-1.8.3.min.js"></script>
+    <script src="~/Content/HomepgaeSlider/js/jquery-ui.min.js"></script>
+</head>
+<body class="col-sm-12">
+    <section>
+        <!-- CAROUSEL -->
+        <div class="line">
+            <div id="owl-demo" class="owl-carousel owl-theme  margin-bottom">
+                <div class="item"><img src="~/Content/HomepgaeSlider/img/01.jpg" /></div>
+                <div class="item"> 
+                    <img src="~/Content/HomepgaeSlider/img/02.jpg" /> </div>
+                <div class="item"> 
+                    <img src="~/Content/HomepgaeSlider/img/03.png" /> </div>
+            </div>
+        </div>
+        <!-- HOME PAGE BLOCK -->
+        <div class="line">
+            <div class="margin">
+
+            </div>
+        </div>
+        <!-- ASIDE NAV AND CONTENT -->
+
+        <!-- GALLERY CAROUSEL -->
+
+    </section>
+    <!-- FOOTER -->
+    <script src="~/Content/HomepgaeSlider/js/responsee.js"></script>
+    <script src="~/Content/HomepgaeSlider/owl-carousel/owl.carousel.min.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $("#owl-demo").owlCarousel({
+                navigation: true,
+                slideSpeed: 300,
+                paginationSpeed: 400,
+                autoPlay: true,
+                singleItem: true
+            });
+            $("#owl-demo2").owlCarousel({
+                items: 4,
+                lazyLoad: true,
+                autoPlay: true,
+                navigation: true,
+                pagination: false
+            });
+        });
+    </script>
+</body>
+</html>

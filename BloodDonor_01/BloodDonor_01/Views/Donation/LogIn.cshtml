@@ -1,0 +1,67 @@
+﻿@model BloodDonor_01.Models.LogInViewModel
+
+@{
+    ViewBag.Title = "LogIn";
+    Layout = "~/Views/Shared/_LayoutMy.cshtml";
+}
+
+<h2>Log In</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <div style="padding-left: 200px">
+            <label style="color: red">
+                @ViewBag.Message
+            </label>
+
+        </div>        
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Username, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Username, new{@class="form-control"})
+                @Html.ValidationMessageFor(model => model.Username)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.PasswordFor(model => model.Password, new{@class="form-control"})
+                @Html.ValidationMessageFor(model => model.Password)
+            </div>
+        </div>
+
+        <div class="form-group">
+            
+            <div class="col-md-10" style="margin-left: 16.67%">
+                @Html.CheckBoxFor(model => model.RememberMe)
+                @Html.LabelFor(model => model.RememberMe)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Log In" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <div class="col-md-10" style="margin-left: 16.67%;">
+            @Html.ActionLink("Forgot Username or Password? reset it...", "ResetPassword", "Donation")
+        </div>
+       
+    </div>
+}
+
+@section scripts {
+    <script src="~/Scripts/jquery-3.1.1.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+}

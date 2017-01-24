@@ -1,0 +1,95 @@
+﻿@using BloodDonor_01.Models
+
+@{
+    ViewBag.Title = "LastFiveDaysRequest";
+    List<NeedBloodViewModel> requestList = ViewBag.lastFiveDaysRequest;
+    var listOfBloodGroups = ViewBag.bloodGroupList;
+    Layout = "~/Views/Shared/_LayoutMy.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+     <fieldset>
+        <h2> Last Five Days Blood Requests... </h2>
+         <hr />
+         <hr/>
+        <div class="form-horizontal">
+            <div class="form-group">
+                <div class="col-sm-2 control-label">
+                    <label for="bloodGroupId">Select Blood Group: </label>
+                </div>
+                <div class="col-sm-10">
+                    <select name="bloodGroupId" id="bloodGroupId" class="form-control">
+                        <option value="">---Select---</option>
+                        @foreach (var group in listOfBloodGroups)
+                        {
+                            <option value="@group.Id">@group.Name</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-bordered table-hover table-responsive table-striped" id="donorTable">
+            <thead>
+                <tr>
+                    <th>Patient Name</th>
+                    <th>Age</th>
+                    <th>Blood Group</th>
+                    <th>Disease</th>
+                    <th>Admitted Hospital & Address</th>
+                    <th>Blood Request Date</th>
+                    <th>Admitted Hospital Area</th>
+                    <th>Contact</th>
+
+                </tr>
+            </thead>
+
+            <tbody id="tablebody">
+                @foreach (var request in requestList)
+                {
+                    <tr>
+                        <td>@request.Name</td>
+                        <td>@request.Age</td>
+                        <td>@request.BloodGroup</td>
+                        <td>@request.Disease</td>
+                        <td>@request.Address</td>
+                        <td>@request.RequestDate</td>
+                        <td>@request.Area</td>
+                        <td>@request.Phone</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+
+    </fieldset>
+   
+}
+
+@section scripts
+{
+<script>
+    $(document).ready(function () {
+        $("#bloodGroupId").change(function () {
+            var bloodGrId = $("#bloodGroupId").val();
+            $.getJSON("../Donation/GetAllRequestOnBloodGroup", { bloodGroupId: bloodGrId },
+                function (allRecentRequestList) {
+                    $("#tablebody").empty();
+                    $.each(allRecentRequestList, function (key, value) {
+
+                        $("#tablebody").append('<tr><td>' + value.Name + '</td><td>' + value.Age + '</td><td>' + value.BloodGroup + '</td><td>' + value.Disease + '</td><td>' + value.Address + '</td><td>' + value.RequestDate + '</td><td>' + value.Area + '</td><td>' + value.Phone + '</td></tr>');
+
+                    });
+
+                });
+        });
+    });
+</script>
+
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-3.1.1.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+}

@@ -1,0 +1,52 @@
+﻿@using BloodDonor_01.Models
+
+@{
+    ViewBag.Title = "FindTopDonors";
+    Layout = "~/Views/Shared/_LayoutMy.cshtml";
+    List<DonorViewModel> topTenDonors = ViewBag.topTenDonors;
+}
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <h2>Top Ten Donors</h2>
+        <hr />      
+
+        <table class="table table-bordered table-hover table-responsive table-striped" id="donorTable">
+            <thead>
+                <tr>
+                    <th>Donor Name</th>
+                    <th>Blood Group</th>
+                    <th>Age</th>
+                    <th>Number of Donation</th>
+                    <th>Last Donation Date</th>
+                    <th>Phone</th>
+                </tr>
+            </thead>
+            <tbody id="tablebody">
+                @foreach (var donor in topTenDonors)
+                {
+                    <tr>
+                        <td>@donor.FirstName @donor.MiddleName @donor.LastName</td>
+                        <td>@donor.BloodGroup</td>
+                        <td>@donor.Age</td>
+                        <td>@donor.NumberOfDonation</td>
+                        <td>@donor.LastDonationDate</td>
+                        <td>@donor.Phone</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+
+    </fieldset>
+}
+
+@section scripts
+{
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-3.1.1.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+}

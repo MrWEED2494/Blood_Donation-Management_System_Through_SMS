@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "DonorGuide";
+    Layout = "~/Views/Shared/_LayoutMy.cshtml";
+}
+@using (Html.BeginForm())
+{
+    <h4>Donor Guide</h4>
+    <hr/>
+    <hr/>
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <ul style="font-size: 40px;">
+            <li>Register first by clicking 'Donor Registration'</li>
+            <li>After completion of registration you are our donor</li>
+            <li>Please try to response in all request that send to you by sms</li>
+            <li>After every donation please update your profile. Specially 'Last Donation Date'</li>
+            <li>If you move to another district and want to continue blood donation, please update your 'Area'</li>
+            <li>To be on top donors list, donate in every request send to you and update 'No of Donation'</li>
+
+        </ul>
+   </div>
+    <hr/>
+    <hr/>
+}
+
+@section scripts {
+    <script src="~/Scripts/jquery-3.1.1.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+}
+
+
+
+

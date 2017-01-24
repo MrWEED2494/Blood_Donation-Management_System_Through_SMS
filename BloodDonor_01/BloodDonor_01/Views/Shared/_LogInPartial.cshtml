@@ -1,0 +1,30 @@
+﻿@using BloodDonor_01.Models
+@{
+    var donor = Session["user"] as DonorViewModel;
+}
+@if (donor != null)
+{
+    using (Html.BeginForm("LogOut", "Donation", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                @Html.ActionLink("Edit Profile", "Edit", "Donation", routeValues: null, htmlAttributes: new { title = "Manage" })
+            </li>
+            <li>
+                @Html.ActionLink(donor.Username, "Index", "Donation")
+            </li>
+            <li>@Html.ActionLink("Log Out", "LogOut", "Donation")</li>
+        </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Donor Registration", "Registration", "Donation")</li>
+        <li>@Html.ActionLink("Log In", "LogIn", "Donation")</li>
+    </ul>
+}
+
+

@@ -1,0 +1,76 @@
+﻿
+@using BloodDonor_01.Models
+
+@{
+    ViewBag.Title = "ViewAllDonors";
+    Layout = "~/Views/Shared/_LayoutMy.cshtml";
+    List<Area> listOfArea = ViewBag.AllArea;
+
+}
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <h2> View Donors</h2>
+        <hr />
+        <div class="form-horizontal">
+            <div class="form-group">
+                <div class="col-sm-2 control-label">
+                    <label for="bloodGroupId">Select Area: </label>
+                </div>
+                <div class="col-sm-10">
+                    <select name="bloodGroupId" id="bloodGroupId" class="form-control">
+                        <option value="">---Select---</option>
+                        @foreach (var area in listOfArea)
+                        {
+                            <option value="@area.Id">@area.Name</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-bordered table-hover table-responsive table-striped" id="donorTable">
+            <thead>
+                <tr>
+                    <th>Donor Name</th>
+                    <th>Blood Group</th>
+                    <th>Age</th>
+                    <th>Number of Donation</th>
+                    <th>Last Donation Date</th>
+                    <th>Phone</th>
+                </tr>
+            </thead>
+            <tbody id="tablebody"></tbody>
+        </table>
+
+
+    </fieldset>
+}
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#bloodGroupId").change(function () {
+             
+                    var bloodGrId = $("#bloodGroupId").val();
+                    $.getJSON("../Donation/GetAllDonorForShow", { areaId: bloodGrId },
+                        function (allDonors) {
+                            $("#tablebody").empty();
+                            $.each(allDonors, function (key, value) {
+
+                                $("#tablebody").append('<tr><td>' + value.FirstName + " " + value.MiddleName + " " + value.LastName + '</td><td>' + value.BloodGroup + '</td><td>' + value.Age + '</td><td>' + value.NumberOfDonation + '</td><td>' + value.LastDonationDate + '</td><td>' + value.Phone + '</td></tr>');
+
+                            });
+
+                        });             
+            });
+        });
+    </script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-3.1.1.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+}

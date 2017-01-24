@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_LayoutMy.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>For any query contact us...</h4>
+        <hr/>
+        <hr/>
+        <div>
+            <div style="padding: 20px">
+                <img src="~/Images/akmal.jpg" />
+            </div>
+            <div style="padding: 20px">
+                <label>Akmal Hossain</label><br />
+                <label>B.Sc. in Computer Science & Engineering(Studying)</label><br />
+                <label>Email: akmal2494@gmail.com</label><br />
+                <label>Cell Phone: 01680358860</label><br /><br />
+            </div>
+
+        </div>
+        <hr />
+        <hr />
+
+        <div>
+            <div style="padding: 20px">
+                <img src="~/Images/mou.jpg" />
+            </div>
+            <div style="padding: 20px">
+                <label>Arifa Afroze Mousumi (Mou)</label><br />
+                <label>B.Sc. in Computer Science & Engineering(Studying)</label><br />
+                <label>Email: arifa2214@diu.edu.bd</label><br />
+                <label>Cell Phone: 01745205706</label><br /><br />
+            </div>
+
+        </div>
+        <hr />
+        <hr />
+        <div>
+            <div style="padding: 20px">
+                <img src="~/Images/chandni.jpg" />
+            </div>
+            <div style="padding: 20px">
+                <label>Kazi Zannatun Nessa (Chandni)</label><br />
+                <label>B.Sc. in Computer Science & Engineering(Studying)</label><br />
+                <label>Email: zannatun2241@diu.edu.bd</label><br />
+                <label>Cell Phone: 01534870605</label><br /><br />
+            </div>
+
+        </div>
+        <hr />
+        <hr />
+    </div>
+}
+
+
+
+@section scripts {    
+    <script src="~/Scripts/jquery-3.1.1.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+}
+
+
+<style>
+    .field-validation-error {
+        color: red;
+    }
+</style>
+
+
+
